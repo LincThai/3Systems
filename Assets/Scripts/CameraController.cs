@@ -7,9 +7,11 @@ namespace ThreeSystems.Player
     public class CameraController : MonoBehaviour
     {
         // Set variables
+        [Header("Mouse Variable")]
         // this is for the camera sensitivity
         public float mouseSensitvity = 100f;
 
+        [Header("Reference Variable")]
         // referencing the player transform for rotation based on camera
         public Transform playerBody;
 
