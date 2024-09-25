@@ -282,7 +282,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &3867341250944062641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1233855131174932134}
   speed: 5
-  gravity: -9.8
   jumpHeight: 2
+  gravity: -9.8
   groundCheck: {fileID: 0}
   groundDistance: 0.4
   groundMask:
