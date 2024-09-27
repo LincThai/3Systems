@@ -42,7 +42,26 @@ namespace ThreeSystems.Player
                 velocity.y = -2f;
             }
 
+            // Get variables for imput values
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
 
+            // asign a vector 3 variable with the movement input
+            Vector3 move = transform.right * x + transform.forward * y;
+
+            // I am using the Move function on the Character Controller to move based on input
+            controller.Move(move * speed * Time.deltaTime);
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            }
+
+            // this will push the player down to the ground
+            velocity.y += gravity * Time.deltaTime;
+
+            // use the move function to apply gravity
+            controller.Move(velocity * Time.deltaTime);
         }
     }
 }
