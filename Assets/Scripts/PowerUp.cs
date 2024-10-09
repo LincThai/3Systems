@@ -8,11 +8,12 @@ namespace ThreeSystems.PowerUp
     {
         // Set Variables
         // These are for my duration and the amount to increase
-        public float increaseAmount = 2f;
-        public float duration = 60f;
+        [SerializeField] private float increaseAmount = 2f;
+        [SerializeField] private float duration = 60f;
 
         // This is to choose the effects
-        public Effects effects;
+        [SerializeField] private Effects activeEffect;
+        public Effects ActiveEffect => activeEffect;
 
         [Flags]
         public enum Effects

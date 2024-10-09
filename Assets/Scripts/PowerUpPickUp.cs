@@ -1,20 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using ThreeSystems.PowerUp;
 using UnityEngine;
 
-public class PowerUpPickUp : MonoBehaviour
+namespace ThreeSystems.PowerUp
 {
-    // set variables
-    // to store a powerup scriptable object
-    public PowerUp powerUp;
-
-    private void OnTriggerEnter(Collider other)
+    public class PowerUpPickUp : MonoBehaviour
     {
-        if (other.tag == "Player")
+        // set variables
+        // to store a powerup scriptable object
+        public PowerUp powerUp;
+
+        private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Picked Up");
-            Destroy(gameObject);
+            if (other.CompareTag("Player"))
+            {
+                Debug.Log("Picked Up");
+                ApplyPowerUp();
+                Destroy(gameObject);
+            }
+        }
+
+        private void ApplyPowerUp()
+        {
+            if (powerUp.ActiveEffect == PowerUp.Effects.MoveSpeed)
+            {
+
+            }
+            if (powerUp.ActiveEffect == PowerUp.Effects.JumpHeight)
+            {
+
+            }
         }
     }
 }
