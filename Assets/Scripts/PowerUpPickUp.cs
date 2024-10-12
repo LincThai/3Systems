@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ThreeSystems.Player;
 using UnityEngine;
 
 namespace ThreeSystems.PowerUp
@@ -15,20 +16,23 @@ namespace ThreeSystems.PowerUp
             if (other.CompareTag("Player"))
             {
                 Debug.Log("Picked Up");
-                ApplyPowerUp();
+                // call the application function then destroy this onject
+                ApplyPowerUp(other.GetComponent<PlayerController>());
                 Destroy(gameObject);
             }
         }
 
-        private void ApplyPowerUp()
+        private void ApplyPowerUp(PlayerController player)
         {
-            if (powerUp.ActiveEffect == PowerUp.Effects.MoveSpeed)
+            switch (powerUp.ActiveEffect)
             {
-
-            }
-            if (powerUp.ActiveEffect == PowerUp.Effects.JumpHeight)
-            {
-
+                case PowerUp.Effects.None:
+                    break;
+                case PowerUp.Effects.MoveSpeed:
+                    //player.speed += powerUp.;
+                    break;
+                case PowerUp.Effects.JumpHeight:
+                    break;
             }
         }
     }
