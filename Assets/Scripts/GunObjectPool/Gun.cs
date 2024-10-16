@@ -5,7 +5,9 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     // set variables
+    // spawn position
     public Transform bulletSpawn;
+    // the bullet
     public GameObject bulletPrefab;
 
     void Update()
@@ -18,6 +20,6 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab);
+        Instantiate(bulletPrefab, bulletSpawn);
     }
 }

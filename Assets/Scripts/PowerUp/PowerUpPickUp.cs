@@ -29,9 +29,12 @@ namespace ThreeSystems.PowerUp
                 case PowerUp.Effects.None:
                     break;
                 case PowerUp.Effects.MoveSpeed:
-                    //player.speed += powerUp.;
+                    player.powerUpSpeed = powerUp.increaseAmount;
+                    StartCoroutine(player.PowerupDuration(powerUp.duration));
                     break;
                 case PowerUp.Effects.JumpHeight:
+                    player.powerUpJump = powerUp.increaseAmount;
+                    StartCoroutine(player.PowerupDuration(powerUp.duration));
                     break;
             }
         }

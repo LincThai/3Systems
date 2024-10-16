@@ -1,0 +1,16 @@
+{
+    "name": "PowerUp_Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a6a6b2ac08d3c2242b58df65b76165fd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

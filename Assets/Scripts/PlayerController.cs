@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace ThreeSystems.Player
@@ -22,6 +23,10 @@ namespace ThreeSystems.Player
         public Transform groundCheck;
         public float groundDistance = 0.4f;
         public LayerMask groundMask;
+
+        // powerup increase amount
+        public float powerUpSpeed;
+        public float powerUpJump;
 
         // this is local variables to check and apply some of the float values above
         Vector3 velocity;
@@ -60,6 +65,15 @@ namespace ThreeSystems.Player
 
             // use the move function to apply gravity
             controller.Move(velocity * Time.deltaTime);
+        }
+
+        public IEnumerator PowerupDuration(float duration)
+        {
+            speed += powerUpSpeed;
+            jumpHeight += powerUpJump;
+            yield return new WaitForSeconds(duration);
+            speed -= powerUpSpeed;
+            jumpHeight -= powerUpJump;
         }
     }
 }
