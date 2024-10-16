@@ -53,7 +53,7 @@ namespace ThreeSystems.Player
             Vector3 move = transform.right * x + transform.forward * y;
 
             // I am using the Move function on the Character Controller to move based on input
-            controller.Move(move * speed * Time.deltaTime);
+            controller.Move(speed * Time.deltaTime * move);
 
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
@@ -71,6 +71,7 @@ namespace ThreeSystems.Player
         {
             speed += powerUpSpeed;
             jumpHeight += powerUpJump;
+            Debug.Log("Power Up is applied");
             yield return new WaitForSeconds(duration);
             speed -= powerUpSpeed;
             jumpHeight -= powerUpJump;

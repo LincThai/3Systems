@@ -16,8 +16,16 @@ namespace ThreeSystems.PowerUp
             if (other.CompareTag("Player"))
             {
                 Debug.Log("Picked Up");
-                // call the application function then destroy this onject
-                ApplyPowerUp(other.GetComponent<PlayerController>());
+                // call the application function then destroy this object
+                if (other.TryGetComponent(out PlayerController playerController))
+                {
+                    ApplyPowerUp(playerController);
+                }
+                else 
+                {
+                    Debug.LogError("Could not find PlayerController component");
+                }
+               
                 Destroy(gameObject);
             }
         }
@@ -30,11 +38,11 @@ namespace ThreeSystems.PowerUp
                     break;
                 case PowerUp.Effects.MoveSpeed:
                     player.powerUpSpeed = powerUp.increaseAmount;
-                    StartCoroutine(player.PowerupDuration(powerUp.duration));
+                    player.StartCoroutine(player.PowerupDuration(powerUp.duration));
                     break;
                 case PowerUp.Effects.JumpHeight:
                     player.powerUpJump = powerUp.increaseAmount;
-                    StartCoroutine(player.PowerupDuration(powerUp.duration));
+                    player.StartCoroutine(player.PowerupDuration(powerUp.duration));
                     break;
             }
         }
