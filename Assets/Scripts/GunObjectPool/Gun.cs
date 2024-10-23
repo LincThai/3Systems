@@ -17,23 +17,13 @@ namespace ThreeSystems.Shooting
         private ObjectPool<Bullet> bulletPool;
         public ObjectPool<Bullet> BulletPool => bulletPool;
 
-        void Update()
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Shoot();
-            }
-        }
-
-        private void Shoot()
+        private void Start()
         {
             // make and setup object pool
             bulletPool = new ObjectPool<Bullet>(() =>
             {
                 // spawn bullet
                 Bullet bullet = Instantiate(bulletPrefab, bulletSpawn);
-                // asign to the pool
-                bullet.SetPool(bulletPool);
                 return bullet;
             },
             bullet =>
@@ -45,6 +35,19 @@ namespace ThreeSystems.Shooting
             bullet => { bullet.gameObject.SetActive(false); },
             bullet => { Destroy(bullet.gameObject); },
             false, ammoCapacity, maxAmmoCount);
+        }
+
+        void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
+        }
+
+        private void Shoot()
+        {
+            bulletPool.Get(out Bullet newBullet);
         }
     }
 }

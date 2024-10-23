@@ -9,14 +9,13 @@ namespace ThreeSystems.Shooting
         // Set variables
         // the stats/other data variables of the bullet
         public float lifetime = 240f;
-        public float bulletSpeed = 3f;
+        public float bulletSpeed = 5f;
 
         // refernce to rigidbody
         private Rigidbody rb;
 
-        // a object pool tp reference the object pool on gun script
-        // to use functions of the pool
-        ObjectPool<Bullet> bulletPool;
+        // Reference to gun script
+        private Gun currentGun;
 
         void Awake()
         {
@@ -36,20 +35,20 @@ namespace ThreeSystems.Shooting
         private void OnCollisionEnter(Collision collision)
         {
             // deactivate the bullet and return to pool if over capacity destroy
-            bulletPool.Release(this);
+            currentGun.BulletPool.Release(this);
         }
         private IEnumerator LifeSpan(float lifetime)
         {
             yield return new WaitForSeconds(lifetime);
 
             // deactivate the bullet and return to pool if over capacity destroy
-            bulletPool.Release(this);
+            currentGun.BulletPool.Release(this);
         }
 
-        public void SetPool(ObjectPool<Bullet> pool)
+        public void SetGun(Gun newGun)
         {
             // assign the pool
-            bulletPool = pool;
+            currentGun = newGun;
         }
 
         public void BulletMove()
