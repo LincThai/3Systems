@@ -1,43 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Gun : MonoBehaviour
+namespace ThreeSystems.Shooting
 {
-    // set variables
-    [SerializeField] private int ammoCapacity = 10;
-    [SerializeField] private int maxAmmoCount = 100;
-
-    // spawn position
-    public Transform bulletSpawn;
-    // the bullet
-    public Bullet bulletPrefab;
-
-    private ObjectPool<Bullet> bulletPool;
-    public ObjectPool<Bullet> BulletPool => bulletPool;
-
-    void Update()
+    public class Gun : MonoBehaviour
     {
-        if (Input.GetButtonDown("Fire1"))
+        // set variables
+        [SerializeField] private int ammoCapacity = 10;
+        [SerializeField] private int maxAmmoCount = 100;
+
+        // spawn position
+        public Transform bulletSpawn;
+        // the bullet
+        public Bullet bulletPrefab;
+
+        private ObjectPool<Bullet> bulletPool;
+        public ObjectPool<Bullet> BulletPool => bulletPool;
+
+        void Update()
         {
-            Shoot();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
         }
-    }
 
-    private void Shoot()
-    {
-        // make and setup object pool
-        bulletPool = new ObjectPool<Bullet>(() =>
+        private void Shoot()
         {
-            // spawn bullet
-            Bullet bullet = Instantiate(bulletPrefab, bulletSpawn);
-            return bullet;
-        },
-        bullet => { bullet.gameObject.SetActive(true); },
-        bullet => { bullet.gameObject.SetActive(false); },
-        bullet => { Destroy(bullet.gameObject); },
-        false, ammoCapacity, maxAmmoCount);
+            // make and setup object pool
+            bulletPool = new ObjectPool<Bullet>(() =>
+            {
+                // spawn bullet
+                Bullet bullet = Instantiate(bulletPrefab, bulletSpawn);
+                // asign to the pool
+                bullet.SetPool(bulletPool);
+                return bullet;
+            },
+            bullet =>
+            {
+                bullet.transform.position = bulletSpawn.position;
+                bullet.transform.rotation = bulletSpawn.rotation;
+                bullet.gameObject.SetActive(true);
+            },
+            bullet => { bullet.gameObject.SetActive(false); },
+            bullet => { Destroy(bullet.gameObject); },
+            false, ammoCapacity, maxAmmoCount);
+        }
     }
 }

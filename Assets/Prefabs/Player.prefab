@@ -235,8 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee91b9cb3ebceb440958ad3954b71123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoCapacity: 10
+  maxAmmoCount: 100
   bulletSpawn: {fileID: 6323485371832090710}
-  bulletPrefab: {fileID: 9086727923640417372, guid: 605d3378adfbe10409e1f015b60ccca9, type: 3}
+  bulletPrefab: {fileID: 4450304798258288034, guid: 605d3378adfbe10409e1f015b60ccca9, type: 3}
 --- !u!1 &6631186665730765624
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,3 +493,5 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  powerUpSpeed: 0
+  powerUpJump: 0
