@@ -23,13 +23,12 @@ namespace ThreeSystems.Shooting
             bulletPool = new ObjectPool<Bullet>(() =>
             {
                 // spawn bullet
-                Bullet bullet = Instantiate(bulletPrefab, bulletSpawn);
+                Bullet bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
                 return bullet;
             },
             bullet =>
             {
-                bullet.transform.position = bulletSpawn.position;
-                bullet.transform.rotation = bulletSpawn.rotation;
+                bullet.transform.SetPositionAndRotation(bulletSpawn.position, bulletSpawn.rotation);
                 bullet.gameObject.SetActive(true);
             },
             bullet => { bullet.gameObject.SetActive(false); },
@@ -48,6 +47,7 @@ namespace ThreeSystems.Shooting
         private void Shoot()
         {
             bulletPool.Get(out Bullet newBullet);
+            newBullet.SetGun(this);
         }
     }
 }

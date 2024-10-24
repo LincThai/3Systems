@@ -36,6 +36,7 @@ namespace ThreeSystems.Shooting
         {
             // deactivate the bullet and return to pool if over capacity destroy
             currentGun.BulletPool.Release(this);
+            Debug.Log("Release!!");
         }
         private IEnumerator LifeSpan(float lifetime)
         {
