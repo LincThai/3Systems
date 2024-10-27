@@ -37,7 +37,6 @@ namespace ThreeSystems.AddressableLoading
                 Debug.Log("PowerUp Spawned");
 
             }
-
         }
     }
 }

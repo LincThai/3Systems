@@ -34,6 +34,11 @@ namespace ThreeSystems.Shooting
 
         private void OnCollisionEnter(Collision collision)
         {
+            // destroys only objects with the tag target
+            if (collision.gameObject.CompareTag("Target"))
+            {
+                Destroy(collision.gameObject);
+            }
             // deactivate the bullet and return to pool if over capacity destroy
             currentGun.BulletPool.Release(this);
             Debug.Log("Release!!");

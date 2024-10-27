@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.VFX;
 
 namespace ThreeSystems.AddressableLoading
 {
@@ -29,7 +26,16 @@ namespace ThreeSystems.AddressableLoading
             // spawns the targets asychronously
             loadTargetHandle = target.InstantiateAsync();
 
+            while (!loadTargetHandle.IsDone)
+            {
+                // the delay
+                await Task.Delay(16);
+            }
 
+            if (loadTargetHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                Debug.Log("Target Spawned");
+            }
         }
     }
 }
