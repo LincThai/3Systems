@@ -9,6 +9,8 @@ namespace ThreeSystems.AddressableLoading
     {
         // the array of assets i want to spawn/load
         public AssetReferenceT<GameObject>[] powerUps;
+        // this will be for the places i want the powerUps to be spawned
+        public Transform[] spawnLocations;
 
         private AsyncOperationHandle<GameObject> loadPowerUpsHandle;
 
@@ -17,14 +19,26 @@ namespace ThreeSystems.AddressableLoading
 
         private void Start()
         {
-            // randomize the powerup
-            index = Random.Range(0, powerUps.Length);
+            // call function to spawn all the powerups in the level
+            // at set locations
+            SpawnMultiPowerUps();
         }
 
-        private async void SpawnPowerUp()
+        private void SpawnMultiPowerUps()
+        {
+            for (int i = 0; i < spawnLocations.Length; i++)
+            {
+                // randomize the powerup
+                index = Random.Range(0, powerUps.Length);
+                // call spawn powerup
+                SpawnPowerUp(spawnLocations[i]);
+            }
+        }
+
+        private async void SpawnPowerUp(Transform spawnPoint)
         {
             // spawns the powerup asynchronously
-            loadPowerUpsHandle = powerUps[index].InstantiateAsync();
+            loadPowerUpsHandle = powerUps[index].InstantiateAsync(spawnPoint);
 
             while (!loadPowerUpsHandle.IsDone)
             {
