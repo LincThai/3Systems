@@ -5,7 +5,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace ThreeSystems.AddressableLoading
 {
-    public class SpawnPoweUps : MonoBehaviour
+    public class SpawnPowerUps : MonoBehaviour
     {
         // the array of assets i want to spawn/load
         public AssetReferenceT<GameObject>[] powerUps;
