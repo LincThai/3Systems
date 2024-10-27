@@ -49,7 +49,6 @@ namespace ThreeSystems.AddressableLoading
             if (loadPowerUpsHandle.Status == AsyncOperationStatus.Succeeded)
             {
                 Debug.Log("PowerUp Spawned");
-
             }
         }
     }

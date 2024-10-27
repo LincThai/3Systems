@@ -16,7 +16,22 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a0332cc4ba24f2f4fabd7d4a40449aab
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: ca8ab1da19855a2438a02856a80d3754
+    m_Address: Assets/Prefabs/JumpPowerUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 01867813f67aa194ca266f0882590b26
+    m_Address: Assets/Prefabs/SpeedPowerUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62068b9513026244fa222ecc05989c4c
+    m_Address: Assets/Prefabs/Target.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 41a3ada1f69b075428a1062851dd520e, type: 2}
   m_SchemaSet:
